@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 @Component
 public class MyFilter extends ZuulFilter {
     private static final Logger LOGGER = LoggerFactory.getLogger(MyFilter.class);
+
     @Override
     public String filterType() {
         return "pre";
@@ -36,15 +37,15 @@ public class MyFilter extends ZuulFilter {
     public Object run() throws ZuulException {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
-        LOGGER.info(String.format("%s >>> %s",request.getMethod(),request.getRequestURL().toString()));
+        LOGGER.info(String.format("%s >>> %s", request.getMethod(), request.getRequestURL().toString()));
         String token = request.getParameter("token");
-        if(token == null || token.trim().length() == 0){
+        if (token == null || token.trim().length() == 0) {
             LOGGER.warn("token is impty");
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
-            try{
+            try {
                 ctx.getResponse().getWriter().write("token is empty");
-            } catch (Exception e){
+            } catch (Exception e) {
                 LOGGER.error(e.getMessage());
             }
             return null;

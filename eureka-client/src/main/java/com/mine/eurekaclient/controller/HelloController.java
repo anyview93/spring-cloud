@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 public class HelloController {
 
     @RequestMapping(value = "/hello")
-    public String hello(@RequestParam String name, HttpServletRequest request){
+    public String hello(@RequestParam String name, HttpServletRequest request) {
         int port = request.getServerPort();
         String str = "hello " + name + ", i am from port " + port;
         return str;

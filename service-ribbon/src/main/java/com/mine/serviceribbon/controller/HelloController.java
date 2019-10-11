@@ -18,7 +18,7 @@ public class HelloController {
     HelloService helloService;
 
     @GetMapping(value = "/hello")
-    public String hello(@RequestParam String name){
+    public String hello(@RequestParam String name) {
         return helloService.helloService(name);
     }
 }

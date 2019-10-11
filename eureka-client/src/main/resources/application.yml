@@ -9,3 +9,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: eurka-client:8763   #修改实例名
+    prefer-ip-address: true       #显示IP
