@@ -2,5 +2,20 @@ server:
   port: 8081
 spring:
   profiles:
-    active: elapse_route
+    active: eurka-client
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: ${spring.application.name}:${server.port}   #修改实例名
+    prefer-ip-address: true       #显示IP
