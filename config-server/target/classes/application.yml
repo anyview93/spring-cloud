@@ -1,0 +1,22 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          searchPaths: respo
+#          uri: https://github.com/anyview93/spring-cloud-config/
+#          username: anyview93
+#          password: shizhiguo1993
+          uri: https://gitee.com/anyview93/spring-cloud-config/
+          username: 17346536364
+          password: shizhiguo1993
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/

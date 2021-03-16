@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: elapse_route
+          uri: http://httpbin.org:80/get
+          filters:
+            - RequestTime=true  #key RequestTime 是工厂类名去掉GatewayFilterFactory的值
+          predicates:
+            - After=2017-01-20T17:42:47.789-07:00[America/Denver]

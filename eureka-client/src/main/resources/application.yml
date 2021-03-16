@@ -12,3 +12,12 @@ eureka:
   instance:
     hostname: eurka-client:8763   #修改实例名
     prefer-ip-address: true       #显示IP
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"

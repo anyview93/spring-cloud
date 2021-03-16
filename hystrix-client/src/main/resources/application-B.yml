@@ -1,0 +1,32 @@
+server:
+  port: 8767
+
+spring:
+  application:
+    name: hystrix-clientB
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: ${spring.application.name}:${server.port}   #修改实例名
+    prefer-ip-address: true       #显示IP
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      cors:
+        allowed-origins: "*"
+        allowed-methods: "*"
+
+turbine:
+  app-config: hystrix-clientA,hystrix-clientB
+  aggregator:
+    clusterConfig: default
+  clusterNameExpression: new String("default")
+  combine-host: true
+  instanceUrlSuffix:
+    default: actuator/hystrix.stream
